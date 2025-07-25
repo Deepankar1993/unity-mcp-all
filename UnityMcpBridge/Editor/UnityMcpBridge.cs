@@ -74,10 +74,10 @@ namespace UnityMcpBridge.Editor
 
             try
             {
-                listener = new TcpListener(IPAddress.Loopback, unityPort);
+                listener = new TcpListener(IPAddress.Any, unityPort);
                 listener.Start();
                 isRunning = true;
-                Debug.Log($"UnityMcpBridge started on port {unityPort}.");
+                Debug.Log($"UnityMcpBridge started on 0.0.0.0:{unityPort} (all network interfaces).");
                 // Assuming ListenerLoop and ProcessCommands are defined elsewhere
                 Task.Run(ListenerLoop);
                 EditorApplication.update += ProcessCommands;
