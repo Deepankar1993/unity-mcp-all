@@ -2,7 +2,16 @@
   "permissions": {
     "allow": [
       "Bash(find:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(ss:*)",
+      "Bash(cat:*)",
+      "Bash(ip route:*)",
+      "Bash(nc:*)",
+      "Bash(python:*)",
+      "Bash(grep:*)",
+      "Bash(UNITY_HOST=100.112.45.43 python test_connection.py)",
+      "Bash(git checkout:*)"
     ],
     "deny": []
   }

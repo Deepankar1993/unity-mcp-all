@@ -49,6 +49,13 @@ Unity MCP connects your tools using two components:
 1.  **Unity MCP Bridge:** A Unity package running inside the Editor. (Installed via Package Manager).
 2.  **Unity MCP Server:** A Python server that runs locally, communicating between the Unity Bridge and your MCP Client. (Installed manually).
 
+### New in v2.0.2: WSL Support 🐧
+- Enhanced WSL (Windows Subsystem for Linux) configuration
+- Automatic Windows host IP detection from WSL
+- New WSL Configuration window in Unity Editor
+- Support for `claude mcp add` and `claude mcp add-json` commands with WSL options
+- Environment variable configuration for custom host IPs
+
 **Flow:** `[Your LLM via MCP Client] <-> [Unity MCP Server (Python)] <-> [Unity MCP Bridge (Unity Editor)]`
 
 ---
@@ -289,6 +296,21 @@ Help make Unity MCP better!
     
     - Use the Manual Configuration steps. Auto-configure might lack permissions to write to the MCP client's config file.
         
+- **WSL (Windows Subsystem for Linux) Configuration:**
+    
+    - **Unity Running on Windows, MCP Server in WSL:** The server automatically detects the Windows host IP. If connection fails:
+        
+        - Set the `UNITY_HOST` environment variable: `export UNITY_HOST=100.112.45.43` (use your Tailscale IP or Windows host IP)
+        
+        - Alternatively, set `WSL_INTEROP_IP`: `export WSL_INTEROP_IP=172.30.64.1` (use your WSL-to-Windows IP)
+        
+        - Find your Windows host IP from WSL: `ip route show default | awk '{print $3}'`
+        
+        - Ensure Windows Firewall allows connections on port 6400 from WSL subnet
+        
+        - **Path Conversion:** Windows paths (e.g., `C:\Users\username\...`) are automatically converted to WSL format (e.g., `/mnt/c/Users/username/...`)
+        
+        - Use the WSL Configuration window in Unity Editor: `Window > Unity MCP > WSL Configuration`
 
 </details>  
 

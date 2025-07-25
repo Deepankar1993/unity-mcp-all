@@ -369,6 +369,16 @@ namespace UnityMcpBridge.Editor.Windows
             
             EditorGUILayout.EndHorizontal();
             
+            // WSL Configuration button - shown only on Windows
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                EditorGUILayout.Space(4);
+                if (GUILayout.Button("WSL Configuration", GUILayout.Height(28)))
+                {
+                    WslConfigWindow.ShowWindow();
+                }
+            }
+            
             EditorGUILayout.Space(8);
             // Quick info
             GUIStyle configInfoStyle = new GUIStyle(EditorStyles.miniLabel)
